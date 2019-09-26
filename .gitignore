@@ -4,6 +4,8 @@ CMakeScripts
 *.build
 *.xcodeproj
 cmake_install.cmake
+**/Debug/
+**/Release/
 
 # Created by https://www.gitignore.io/api/cmake,linux,clion,xcode,macos,windows,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=cmake,linux,clion,xcode,macos,windows,visualstudiocode
