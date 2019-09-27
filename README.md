@@ -61,7 +61,7 @@ int main()
 }
 ```
 
-A result of the eample.
+A result of the eample shows as follows.
 
 ```
 31
