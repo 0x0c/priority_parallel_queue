@@ -15,28 +15,34 @@ public:
 
 int main()
 {
-    auto q = m2d::priority_parallel_queue<message>();
-    q.push(message("a1"), 1);
-    q.push(message("b1"), 1);
+    auto q = m2d::priority_parallel_queue<std::string>();
+    q.push("11", 1);
+    q.push("12", 1);
     
-    q.push(message("a2"), 2);
-    q.push(message("b2"), 2);
+    q.push("21", 2);
+    q.push("22", 2);
     
-    q.push(message("c1"), 1);
-    q.push(message("a3"), 3);
-    q.push(message("c2"), 2);
+    q.push("13", 1);
+    q.push("14", 1);
     
-    q.push(message("b3"), 3);
-    q.push(message("d2"), 2);
-    q.push(message("d1"), 1);
+    q.push("23", 2);
+    q.push("24", 2);
     
-    q.push(message("c3"), 3);
-    q.push(message("d3"), 3);
+    q.push("31", 3);
+    q.push("32", 3);
+    
+    q.push("33", 3);
+    q.push("25", 2);
+    q.push("15", 1);
+    
+    q.push("34", 3);
+    q.push("35", 3);
     
     while(!q.empty()) {
-        auto m = q.pop();
-        std::cout << m.text << std::endl;
+        auto m = q.top();
+        std::cout << m << std::endl;
+        q.pop();
     }
-    
+
     return 0;
 }
