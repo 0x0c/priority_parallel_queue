@@ -14,36 +14,47 @@ For example, push some values with priority, like this.
 class message
 {
 public:
-    message(std::string text) {
+    explicit message(std::string text) {
         this->text = text;
     }
-
+    
+    message(const message &m) = default;
+    message(message&& m) = default;
+    message& operator=(message&&) = default;
+    message& operator=(message const&) = default;
+    
     std::string text;
 };
 
 int main()
 {
     auto q = m2d::priority_parallel_queue<message>();
-    q.push(message("a1"), 1);
-    q.push(message("b1"), 1);
-
-    q.push(message("a2"), 2);
-    q.push(message("b2"), 2);
-
-    q.push(message("c1"), 1);
-    q.push(message("a3"), 3);
-    q.push(message("c2"), 2);
-
-    q.push(message("b3"), 3);
-    q.push(message("d2"), 2);
-    q.push(message("d1"), 1);
-
-    q.push(message("c3"), 3);
-    q.push(message("d3"), 3);
-
+    q.push(message("11"), 1);
+    q.push(message("12"), 1);
+    
+    q.push(message("21"), 2);
+    q.push(message("22"), 2);
+    
+    q.push(message("13"), 1);
+    q.push(message("14"), 1);
+    
+    q.push(message("23"), 2);
+    q.push(message("24"), 2);
+    
+    q.push(message("31"), 3);
+    q.push(message("32"), 3);
+    
+    q.push(message("33"), 3);
+    q.push(message("25"), 2);
+    q.push(message("15"), 1);
+    
+    q.push(message("34"), 3);
+    q.push(message("35"), 3);
+    
     while(!q.empty()) {
-        auto m = q.pop();
+        auto m = q.top();
         std::cout << m.text << std::endl;
+        q.pop();
     }
 
     return 0;
@@ -53,16 +64,19 @@ int main()
 A result of the eample.
 
 ```
-a3
-b3
-c3
-d3
-a2
-b2
-c2
-d2
-a1
-b1
-c1
-d1
+31
+32
+33
+34
+35
+21
+22
+23
+24
+25
+11
+12
+13
+14
+15
 ```
