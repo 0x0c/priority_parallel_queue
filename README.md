@@ -1,4 +1,4 @@
-# PriorityParallelQueue
+# priority_parallel_queue
 
 A priority queue that contains queues.
 
